@@ -375,7 +375,7 @@
   /* ---------------- Fleet selector ---------------- */
   (() => {
     const FLEET = {
-      b787: { img: 'assets/fleet-787.webp?v=5', name: 'Boeing 787-9', tag: 'The Dreamliner',
+      b787: { img: 'assets/fleet-787.webp?v=6', name: 'Boeing 787-9', tag: 'The Dreamliner',
         alt: 'Biman Bangladesh Airlines Boeing 787-9 Dreamliner in flight',
         spec: [['Boeing 787-9', 'Dreamliner'], ['14,140 km', 'Max range'], ['298', 'Seats / 3 class'], ['0.85 Mach', 'Cruise speed']] },
       b777: { img: 'assets/fleet-777.webp?v=5', name: 'Boeing 777-300ER', tag: 'The Flagship',
