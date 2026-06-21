@@ -107,9 +107,12 @@
       .from('.hero__actions', { y: 24, opacity: 0, duration: 1 }, 1.05)
       .from('.hero__scroll', { opacity: 0, duration: 1 }, 1.3);
 
-    // cutout 787 — fly-across the upper sky, then pause 5s off-screen before looping
-    gsap.fromTo('#heroPlane', { x: '-42vw' },
-      { x: '135vw', duration: 13, ease: 'none', repeat: -1, repeatDelay: 7, delay: .3 });
+    // cutout 787 — fly fully across & off-screen, fade out at the edges, pause 7s, loop
+    const planeTl = gsap.timeline({ repeat: -1, repeatDelay: 7, delay: .3 });
+    planeTl
+      .fromTo('#heroPlane', { x: '-55vw' }, { x: '160vw', duration: 14, ease: 'none' }, 0)
+      .fromTo('#heroPlane', { opacity: 0 }, { opacity: 1, duration: 1.6, ease: 'power1.out' }, 0)
+      .to('#heroPlane', { opacity: 0, duration: 1.8, ease: 'power1.in' }, 12.2);
     gsap.to('#heroPlane', { y: '-=26', duration: 5.5, ease: 'sine.inOut', repeat: -1, yoyo: true });
   }
 
