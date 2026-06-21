@@ -120,9 +120,9 @@ a{color:inherit;text-decoration:none}
 .sky-front{filter:drop-shadow(0 -1px 0 rgba(255,255,255,.04))}
 
 .hero__content{position:absolute;z-index:6;left:clamp(20px,5vw,72px);bottom:clamp(120px,18vh,210px);max-width:760px;color:#fff}
-.hero__eyebrow{font-size:13px;letter-spacing:.06em;opacity:.9;margin-bottom:18px;display:flex;gap:10px;align-items:center;text-transform:uppercase;font-weight:600}
+.hero__eyebrow{font-size:13px;letter-spacing:.06em;opacity:.9;margin-bottom:24px;display:flex;gap:10px;align-items:center;text-transform:uppercase;font-weight:600}
 .hero__eyebrow span{font-family:var(--bn);text-transform:none;font-size:15px;letter-spacing:0}
-.hero__title{font-family:var(--serif);font-weight:400;font-size:clamp(56px,11vw,158px);line-height:.92;letter-spacing:-.02em}
+.hero__title{font-family:var(--serif);font-weight:400;font-size:clamp(54px,9.3vw,132px);line-height:.95;letter-spacing:-.02em}
 .hero__title .line{display:block;overflow:hidden}
 .hero__title .word{display:inline-block;transform:translateY(110%)}
 .hero__title .word.italic{color:var(--gold)}
