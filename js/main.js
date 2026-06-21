@@ -372,6 +372,44 @@
   gsap.from('.spec', { y: 30, opacity: 0, duration: .8, stagger: .1, ease: 'expo.out',
     scrollTrigger: { trigger: '.fleet__spec', start: 'top 85%' } });
 
+  /* ---------------- Fleet selector ---------------- */
+  (() => {
+    const FLEET = {
+      b787: { img: 'assets/fleet-787.webp', name: 'Boeing 787-9', tag: 'The Dreamliner',
+        alt: 'Biman Bangladesh Airlines Boeing 787-9 Dreamliner in flight',
+        spec: [['Boeing 787-9', 'Dreamliner'], ['14,140 km', 'Max range'], ['298', 'Seats / 3 class'], ['0.85 Mach', 'Cruise speed']] },
+      b777: { img: 'assets/fleet-777.webp', name: 'Boeing 777-300ER', tag: 'The Flagship',
+        alt: 'Biman Bangladesh Airlines Boeing 777-300ER climbing into a blue sky',
+        spec: [['Boeing 777-300ER', 'Flagship'], ['13,650 km', 'Max range'], ['419', 'Seats / 2 class'], ['0.84 Mach', 'Cruise speed']] },
+      b737: { img: 'assets/fleet-737.webp', name: 'Boeing 737-800', tag: 'The Workhorse',
+        alt: 'Biman Bangladesh Airlines Boeing 737-800 cruising above the clouds',
+        spec: [['Boeing 737-800', 'Workhorse'], ['5,765 km', 'Max range'], ['162', 'Seats / 2 class'], ['0.785 Mach', 'Cruise speed']] }
+    };
+    const img = document.getElementById('fleetImg');
+    const cap = document.getElementById('fleetCap');
+    const specEl = document.getElementById('fleetSpec');
+    const thumbs = [...document.querySelectorAll('.fleet__thumb')];
+    if (!img || !thumbs.length) return;
+    let current = 'b787';
+
+    function show(key) {
+      if (key === current) return;
+      const d = FLEET[key];
+      if (!d) return;
+      current = key;
+      thumbs.forEach(t => t.classList.toggle('is-active', t.dataset.key === key));
+      img.classList.add('is-fading');
+      setTimeout(() => {
+        img.src = d.img; img.alt = d.alt;
+        cap.innerHTML = `<span>${d.name}</span> · ${d.tag}`;
+        const specs = specEl.querySelectorAll('.spec');
+        d.spec.forEach((s, i) => { if (specs[i]) { specs[i].querySelector('span').textContent = s[0]; specs[i].querySelector('i').textContent = s[1]; } });
+        img.classList.remove('is-fading');
+      }, 280);
+    }
+    thumbs.forEach(t => t.addEventListener('click', () => show(t.dataset.key)));
+  })();
+
   /* ---------------- CTA title ---------------- */
   gsap.from('.cta__title', { y: 60, opacity: 0, duration: 1.2, ease: 'expo.out',
     scrollTrigger: { trigger: '.cta', start: 'top 75%' } });
