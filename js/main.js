@@ -375,13 +375,13 @@
   /* ---------------- Fleet selector ---------------- */
   (() => {
     const FLEET = {
-      b787: { img: 'assets/fleet-787.webp?v=2', name: 'Boeing 787-9', tag: 'The Dreamliner',
+      b787: { img: 'assets/fleet-787.webp?v=4', name: 'Boeing 787-9', tag: 'The Dreamliner',
         alt: 'Biman Bangladesh Airlines Boeing 787-9 Dreamliner in flight',
         spec: [['Boeing 787-9', 'Dreamliner'], ['14,140 km', 'Max range'], ['298', 'Seats / 3 class'], ['0.85 Mach', 'Cruise speed']] },
-      b777: { img: 'assets/fleet-777.webp?v=3', name: 'Boeing 777-300ER', tag: 'The Flagship',
+      b777: { img: 'assets/fleet-777.webp?v=4', name: 'Boeing 777-300ER', tag: 'The Flagship',
         alt: 'Biman Bangladesh Airlines Boeing 777-300ER climbing into a blue sky',
         spec: [['Boeing 777-300ER', 'Flagship'], ['13,650 km', 'Max range'], ['419', 'Seats / 2 class'], ['0.84 Mach', 'Cruise speed']] },
-      b737: { img: 'assets/fleet-737.webp?v=2', name: 'Boeing 737-800', tag: 'The Workhorse',
+      b737: { img: 'assets/fleet-737.webp?v=4', name: 'Boeing 737-800', tag: 'The Workhorse',
         alt: 'Biman Bangladesh Airlines Boeing 737-800 cruising above the clouds',
         spec: [['Boeing 737-800', 'Workhorse'], ['5,765 km', 'Max range'], ['162', 'Seats / 2 class'], ['0.785 Mach', 'Cruise speed']] }
     };
