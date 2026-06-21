@@ -109,7 +109,7 @@
 
     // cutout 787 — fly-across the upper sky, then pause 5s off-screen before looping
     gsap.fromTo('#heroPlane', { x: '-42vw' },
-      { x: '135vw', duration: 13, ease: 'none', repeat: -1, repeatDelay: 5, delay: .3 });
+      { x: '135vw', duration: 13, ease: 'none', repeat: -1, repeatDelay: 7, delay: .3 });
     gsap.to('#heroPlane', { y: '-=26', duration: 5.5, ease: 'sine.inOut', repeat: -1, yoyo: true });
   }
 
