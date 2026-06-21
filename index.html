@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biman Bangladesh Airlines — The Sky is Yours</title>
+  <meta name="description" content="Biman Bangladesh Airlines. Cinematic booking experience. Fly the colours of Bangladesh across 30+ global destinations." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <img class="preloader__logo" src="assets/biman-logo-white.svg" alt="Biman Bangladesh Airlines" />
+      <div class="preloader__count"><span id="counter">0</span><i>%</i></div>
+    </div>
+  </div>
+
+  <!-- ===== CURSOR ===== -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__brand" data-hover>
+      <img class="brand-logo brand-logo--white" src="assets/biman-logo-white.svg" alt="Biman Bangladesh Airlines" />
+      <img class="brand-logo brand-logo--color" src="assets/biman-logo.svg" alt="" aria-hidden="true" />
+    </a>
+    <nav class="nav__links">
+      <a href="#book" data-hover>Book</a>
+      <a href="#destinations" data-hover>Destinations</a>
+      <a href="#experience" data-hover>Experience</a>
+      <a href="#fleet" data-hover>Fleet</a>
+    </nav>
+    <a href="#book" class="nav__cta" data-hover>
+      <span>Manage Trip</span>
+    </a>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <canvas class="hero__sky" id="skyCanvas"></canvas>
+
+    <!-- sun = flag red disc -->
+    <div class="hero__sun" id="heroSun"></div>
+
+    <!-- parallax cloud layers -->
+    <div class="hero__clouds" data-depth="0.10">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="cloud cloud--back"><path d="M0 240 Q 200 160 420 220 T 860 200 T 1440 230 V320 H0 Z"/></svg>
+    </div>
+    <div class="hero__clouds" data-depth="0.22">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" class="cloud cloud--mid"><path d="M0 270 Q 260 200 520 260 T 1040 250 T 1440 270 V320 H0 Z"/></svg>
+    </div>
+
+    <!-- the aircraft -->
+    <div class="hero__plane" id="heroPlane">
+      <span class="hero__contrail"></span>
+      <img src="assets/biman-787-cutout.webp" width="1500" height="837" decoding="async" alt="Biman Bangladesh Airlines Boeing 787 in flight" />
+    </div>
+
+    <!-- foreground skyline silhouette -->
+    <div class="hero__skyline" data-depth="0.05">
+      <svg viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="skyFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0d4734"/>
+            <stop offset="1" stop-color="#03190f"/>
+          </linearGradient>
+          <linearGradient id="skyBack" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1a5e45"/>
+            <stop offset="1" stop-color="#0a3527"/>
+          </linearGradient>
+        </defs>
+        <!-- distant hazy city, blended into the dawn -->
+        <g class="sky-back" fill="url(#skyBack)">
+          <path d="M0,240 L0,196 L70,196 L70,176 L150,176 L150,200 L235,200 L235,168 L320,168 L320,196 L430,196 L430,160 L520,160 L520,198 L640,198 L640,158 L745,158 L745,196 L865,196 L865,176 L985,176 L985,150 L1065,150 L1065,196 L1185,196 L1185,170 L1285,170 L1285,196 L1405,196 L1405,182 L1440,182 L1440,240 Z"/>
+          <path d="M360,196 L360,120 L378,120 L378,196 Z"/>
+          <path d="M1110,196 L1110,128 L1126,128 L1126,196 Z"/>
+        </g>
+        <!-- foreground landmarks -->
+        <g class="sky-front" fill="url(#skyFront)">
+          <!-- city blocks -->
+          <path d="M0,240 L0,178 L40,178 L40,150 L70,150 L70,178 L118,178 L118,135 L150,135 L150,178 L200,178 L200,160 L238,160 L238,125 L280,125 L280,178 L338,178 L338,148 L380,148 L380,178 L440,178 L440,168 L478,168 L478,178 L660,178 L790,178 L840,178 L840,150 L880,150 L880,178 L1000,178 L1000,140 L1040,140 L1040,178 L1095,178 L1095,120 L1112,120 L1112,178 L1160,178 L1160,158 L1205,158 L1205,178 L1270,178 L1270,138 L1315,138 L1315,178 L1370,178 L1370,165 L1410,165 L1410,178 L1440,178 L1440,240 Z"/>
+          <!-- antenna mast on thin tower -->
+          <path d="M1102,120 L1104,86 L1106,120 Z"/>
+          <!-- the Gherkin (30 St Mary Axe) bullet -->
+          <path d="M662,178 C658,116 690,66 725,46 C760,66 792,116 788,178 Z"/>
+          <!-- mosque: onion dome + two minarets (Dhaka) -->
+          <path d="M524,178 L524,150 L576,150 L576,178 Z"/>
+          <path d="M526,150 C524,132 538,112 550,110 C562,112 576,132 574,150 Z"/>
+          <path d="M547,110 L550,95 L553,110 Z"/>
+          <path d="M505,178 L505,120 L517,120 L517,178 Z"/>
+          <path d="M506,120 C505,111 511,103 511,103 C511,103 517,111 516,120 Z"/>
+          <path d="M509,103 L511,91 L513,103 Z"/>
+          <path d="M585,178 L585,120 L597,120 L597,178 Z"/>
+          <path d="M586,120 C585,111 591,103 591,103 C591,103 597,111 596,120 Z"/>
+          <path d="M589,103 L591,91 L593,103 Z"/>
+          <!-- spire tower -->
+          <path d="M905,178 L905,150 L960,150 L960,178 Z"/>
+          <path d="M918,152 L933,58 L948,152 Z"/>
+          <path d="M932,58 L933,40 L934,58 Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- headline -->
+    <div class="hero__content">
+      <p class="hero__eyebrow"><span>আকাশে শান্তির নীড়</span> · Your Home in the Sky</p>
+      <h1 class="hero__title">
+        <span class="line"><span class="word">The</span> <span class="word">Sky</span></span>
+        <span class="line"><span class="word italic">is</span> <span class="word">Yours</span></span>
+      </h1>
+      <p class="hero__sub">Carry the colours of Bangladesh to 30+ destinations across four continents — woven into every journey, the warmth of home.</p>
+      <div class="hero__actions">
+        <a href="#book" class="btn btn--primary" data-hover><span>Book your flight</span></a>
+        <a href="#experience" class="btn btn--ghost" data-hover><span>Watch the journey</span></a>
+      </div>
+    </div>
+
+    <div class="hero__scroll">
+      <span>Scroll</span>
+      <i></i>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING WIDGET ===== -->
+  <section class="book" id="book">
+    <div class="book__card" id="bookCard">
+      <div class="book__tabs">
+        <button class="book__tab is-active" data-trip="round">Round trip</button>
+        <button class="book__tab" data-trip="oneway">One way</button>
+        <button class="book__tab" data-trip="multi">Multi-city</button>
+        <span class="book__tab-ink" id="tabInk"></span>
+      </div>
+
+      <form class="book__grid" id="bookForm" onsubmit="return false;">
+        <label class="field field--from">
+          <span class="field__label">From</span>
+          <span class="field__city">Dhaka <em>DAC</em></span>
+          <span class="field__hint">Hazrat Shahjalal Intl</span>
+        </label>
+
+        <button type="button" class="book__swap" id="swapBtn" aria-label="Swap" data-hover>
+          <svg viewBox="0 0 24 24"><path d="M7 7h11l-3-3M17 17H6l3 3"/></svg>
+        </button>
+
+        <label class="field field--to">
+          <span class="field__label">To</span>
+          <span class="field__city">London <em>LHR</em></span>
+          <span class="field__hint">Heathrow Terminal 4</span>
+        </label>
+
+        <button type="button" class="field" data-field="depart" id="departField">
+          <span class="field__label">Depart</span>
+          <span class="field__city" data-city>Jun 28</span>
+          <span class="field__hint" data-hint>Saturday</span>
+        </button>
+
+        <button type="button" class="field" data-field="return" data-return id="returnField">
+          <span class="field__label">Return</span>
+          <span class="field__city" data-city>Jul 12</span>
+          <span class="field__hint" data-hint>Saturday</span>
+        </button>
+
+        <button type="button" class="field" data-field="pax" id="paxField">
+          <span class="field__label">Passengers</span>
+          <span class="field__city" data-pax-count>1 Adult</span>
+          <span class="field__hint" data-pax-class>Business</span>
+        </button>
+
+        <button type="submit" class="book__search" data-hover>
+          <span>Search flights</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </form>
+
+      <div class="book__perks">
+        <span>✦ Best fare guarantee</span>
+        <span>✦ Free 30kg baggage</span>
+        <span>✦ Biman Loyalty Club points</span>
+      </div>
+
+      <!-- passenger & cabin selector -->
+      <div class="pax" id="paxPanel" hidden>
+        <div class="pax__row" data-pax="adults" data-min="1" data-max="9">
+          <div class="pax__info"><strong>Adults</strong><span>12+ years</span></div>
+          <div class="pax__step">
+            <button type="button" class="pax__btn" data-dec aria-label="Fewer adults">−</button>
+            <span class="pax__val" data-val>1</span>
+            <button type="button" class="pax__btn" data-inc aria-label="More adults">+</button>
+          </div>
+        </div>
+        <div class="pax__row" data-pax="children" data-min="0" data-max="8">
+          <div class="pax__info"><strong>Children</strong><span>2–11 years</span></div>
+          <div class="pax__step">
+            <button type="button" class="pax__btn" data-dec aria-label="Fewer children">−</button>
+            <span class="pax__val" data-val>0</span>
+            <button type="button" class="pax__btn" data-inc aria-label="More children">+</button>
+          </div>
+        </div>
+        <div class="pax__row" data-pax="infants" data-min="0" data-max="4">
+          <div class="pax__info"><strong>Infants</strong><span>Under 2 · on lap</span></div>
+          <div class="pax__step">
+            <button type="button" class="pax__btn" data-dec aria-label="Fewer infants">−</button>
+            <span class="pax__val" data-val>0</span>
+            <button type="button" class="pax__btn" data-inc aria-label="More infants">+</button>
+          </div>
+        </div>
+        <div class="pax__class">
+          <span class="pax__clabel">Cabin</span>
+          <div class="pax__chips">
+            <button type="button" class="pax__chip is-active" data-class="Economy">Economy</button>
+            <button type="button" class="pax__chip" data-class="Premium">Premium</button>
+            <button type="button" class="pax__chip" data-class="Business">Business</button>
+            <button type="button" class="pax__chip" data-class="First">First</button>
+          </div>
+        </div>
+        <button type="button" class="pax__done" data-pax-done>Done</button>
+      </div>
+
+      <!-- themed range calendar -->
+      <div class="cal" id="calendar" hidden>
+        <div class="cal__head">
+          <button type="button" class="cal__nav" data-cal-prev aria-label="Previous month">
+            <svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <div class="cal__months" id="calMonths"></div>
+          <button type="button" class="cal__nav" data-cal-next aria-label="Next month">
+            <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+        <div class="cal__foot">
+          <span class="cal__legend"><i class="dot dot--start"></i> Depart <i class="dot dot--end"></i> Return</span>
+          <span class="cal__hint" id="calHint">Select your departure date</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>DHAKA</span><i>✦</i><span>LONDON</span><i>✦</i><span>TORONTO</span><i>✦</i><span>DUBAI</span><i>✦</i><span>SINGAPORE</span><i>✦</i><span>JEDDAH</span><i>✦</i><span>KUALA LUMPUR</span><i>✦</i><span>MANCHESTER</span><i>✦</i>
+      <span>DHAKA</span><i>✦</i><span>LONDON</span><i>✦</i><span>TORONTO</span><i>✦</i><span>DUBAI</span><i>✦</i><span>SINGAPORE</span><i>✦</i><span>JEDDAH</span><i>✦</i><span>KUALA LUMPUR</span><i>✦</i><span>MANCHESTER</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- ===== DESTINATIONS ===== -->
+  <section class="dest" id="destinations">
+    <div class="section-head">
+      <p class="kicker"><i></i>02 — Destinations</p>
+      <h2 class="section-title">Where will the <span class="italic">stork</span> take you?</h2>
+    </div>
+
+    <div class="dest__grid">
+      <article class="dcard" data-tilt style="--img:linear-gradient(180deg,#0b3a2c,#1f6f53)">
+        <div class="dcard__media"><div class="dcard__art dcard__art--london"></div></div>
+        <div class="dcard__body">
+          <span class="dcard__tag">Europe</span>
+          <h3>London</h3>
+          <p>Daily wide-body service to Heathrow.</p>
+          <span class="dcard__fare">from <strong>৳ 78,500</strong></span>
+        </div>
+      </article>
+
+      <article class="dcard" data-tilt style="--img:linear-gradient(180deg,#3a230b,#8a5a1f)">
+        <div class="dcard__media"><div class="dcard__art dcard__art--dubai"></div></div>
+        <div class="dcard__body">
+          <span class="dcard__tag">Middle East</span>
+          <h3>Dubai</h3>
+          <p>Gateway to the Gulf, twice daily.</p>
+          <span class="dcard__fare">from <strong>৳ 42,900</strong></span>
+        </div>
+      </article>
+
+      <article class="dcard" data-tilt style="--img:linear-gradient(180deg,#0b1f3a,#1f4f8a)">
+        <div class="dcard__media"><div class="dcard__art dcard__art--toronto"></div></div>
+        <div class="dcard__body">
+          <span class="dcard__tag">North America</span>
+          <h3>Toronto</h3>
+          <p>Non-stop across the Atlantic.</p>
+          <span class="dcard__fare">from <strong>৳ 1,24,000</strong></span>
+        </div>
+      </article>
+
+      <article class="dcard" data-tilt style="--img:linear-gradient(180deg,#2a0b3a,#6a1f8a)">
+        <div class="dcard__media"><div class="dcard__art dcard__art--singapore"></div></div>
+        <div class="dcard__body">
+          <span class="dcard__tag">Asia</span>
+          <h3>Singapore</h3>
+          <p>Connect to the world's finest hub.</p>
+          <span class="dcard__fare">from <strong>৳ 38,200</strong></span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== ROUTE MAP ===== -->
+  <section class="routes" id="routes">
+    <div class="section-head">
+      <p class="kicker kicker--light"><i></i>03 — The Network</p>
+      <h2 class="section-title">Every arc begins in <span class="italic">Dhaka</span></h2>
+    </div>
+    <div class="routes__wrap">
+      <div class="routes__map">
+        <svg id="routeSvg" viewBox="255 45 555 285" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <g id="graticule"></g>
+          <g id="arcs"></g>
+          <g id="nodes"></g>
+          <g id="planes"></g>
+        </svg>
+      </div>
+      <aside class="routes__panel" id="routePanel">
+        <span class="routes__hub">HUB · DHAKA (DAC)</span>
+        <h3 id="routeCity">London</h3>
+        <p id="routeMeta">Heathrow · 8h 55m · daily</p>
+        <span class="routes__fare" id="routeFare">from ৳ 78,500</span>
+        <div class="routes__list" id="routeList"></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE (parallax storytelling) ===== -->
+  <section class="exp" id="experience">
+    <div class="exp__sticky">
+      <div class="exp__bg" id="expBg"></div>
+      <div class="exp__overlay"></div>
+      <div class="exp__steps" id="expSteps">
+        <div class="exp__step is-active">
+          <p class="kicker kicker--light"><i></i>04 — Experience</p>
+          <h2>Hospitality, <span class="italic">woven in</span></h2>
+          <p class="exp__copy">From the first <em>nomoshkar</em> at the door to the last cup of cha, every detail carries the spirit of Bengal.</p>
+        </div>
+        <div class="exp__step">
+          <h2>Taste of <span class="italic">home</span></h2>
+          <p class="exp__copy">Chefs reimagine biryani, hilsa and pithā at 38,000 feet — flavours that feel like Friday lunch with family.</p>
+        </div>
+        <div class="exp__step">
+          <h2>Rest, <span class="italic">redefined</span></h2>
+          <p class="exp__copy">Lie-flat suites in business, mood-lit cabins, and KrisWorld-class entertainment for every traveller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats">
+    <div class="stat"><span class="stat__num" data-count="53">0</span><span class="stat__suf">yrs</span><p>Connecting Bangladesh to the world since 1972</p></div>
+    <div class="stat"><span class="stat__num" data-count="30">0</span><span class="stat__suf">+</span><p>Destinations across four continents</p></div>
+    <div class="stat"><span class="stat__num" data-count="21">0</span><span class="stat__suf"></span><p>Modern aircraft including the 787 Dreamliner</p></div>
+    <div class="stat"><span class="stat__num" data-count="4">0</span><span class="stat__suf">M+</span><p>Passengers carried home every year</p></div>
+  </section>
+
+  <!-- ===== FLEET ===== -->
+  <section class="fleet" id="fleet">
+    <div class="section-head">
+      <p class="kicker"><i></i>05 — The Fleet</p>
+      <h2 class="section-title">Engineered for the <span class="italic">long way home</span></h2>
+    </div>
+    <div class="fleet__hero">
+      <figure class="fleet__photo" id="fleetPlane">
+        <img src="assets/biman-787.webp" width="1700" height="949" loading="lazy" decoding="async" alt="Biman Bangladesh Airlines Boeing 787-9 Dreamliner in flight" />
+        <figcaption><span>Boeing 787-9</span> · A7-BIM · The Dreamliner</figcaption>
+      </figure>
+      <div class="fleet__spec">
+        <div class="spec"><span>Boeing 787-9</span><i>Dreamliner</i></div>
+        <div class="spec"><span>14,140 km</span><i>Max range</i></div>
+        <div class="spec"><span>298</span><i>Seats / 3 class</i></div>
+        <div class="spec"><span>0.85 Mach</span><i>Cruise speed</i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="cta__inner">
+      <h2 class="cta__title">The colours of home,<br/><span class="italic">wherever you fly.</span></h2>
+      <a href="#book" class="btn btn--primary btn--lg" data-hover><span>Start your journey</span></a>
+    </div>
+    <div class="cta__flag"></div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img class="brand-logo" src="assets/biman-logo-white.svg" alt="Biman Bangladesh Airlines" />
+      </div>
+      <div class="footer__cols">
+        <div><h4>Fly</h4><a href="#book">Book a flight</a><a href="#">Check-in</a><a href="#">Flight status</a><a href="#">Manage booking</a></div>
+        <div><h4>Experience</h4><a href="#">Cabins</a><a href="#">Dining</a><a href="#">Loyalty Club</a><a href="#">Lounges</a></div>
+        <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Sustainability</a></div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 1972–2026 Biman Bangladesh Airlines. Concept redesign.</span>
+      <span class="footer__bn">আকাশে শান্তির নীড়</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

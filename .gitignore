@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+node_modules/
+
+# large source renders — only the optimized .webp are used by the site
+assets/biman-787.png
+assets/biman-787-cutout.png
