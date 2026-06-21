@@ -107,9 +107,9 @@
       .from('.hero__actions', { y: 24, opacity: 0, duration: 1 }, 1.05)
       .from('.hero__scroll', { opacity: 0, duration: 1 }, 1.3);
 
-    // cutout 787 — continuous cinematic fly-across the upper sky, with a gentle bob
+    // cutout 787 — fly-across the upper sky, then pause 5s off-screen before looping
     gsap.fromTo('#heroPlane', { x: '-42vw' },
-      { x: '135vw', duration: 13, ease: 'none', repeat: -1, delay: .3 });
+      { x: '135vw', duration: 13, ease: 'none', repeat: -1, repeatDelay: 5, delay: .3 });
     gsap.to('#heroPlane', { y: '-=26', duration: 5.5, ease: 'sine.inOut', repeat: -1, yoyo: true });
   }
 
