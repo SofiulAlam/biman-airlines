@@ -102,7 +102,6 @@
     tl.fromTo('#heroSun', { y: 160, scale: .7, opacity: 0 },
         { y: 0, scale: 1, opacity: 1, duration: 1.8 }, 0)
       .to('.hero__title .word', { y: 0, duration: 1.3, stagger: .09 }, .35)
-      .from('.hero__eyebrow', { y: 24, opacity: 0, duration: 1 }, .5)
       .from('.hero__sub', { y: 24, opacity: 0, duration: 1 }, .9)
       .from('.hero__actions', { y: 24, opacity: 0, duration: 1 }, 1.05)
       .from('.hero__scroll', { opacity: 0, duration: 1 }, 1.3);
@@ -381,7 +380,7 @@
       b777: { img: 'assets/fleet-777.webp?v=5', name: 'Boeing 777-300ER', tag: 'The Flagship',
         alt: 'Biman Bangladesh Airlines Boeing 777-300ER climbing into a blue sky',
         spec: [['Boeing 777-300ER', 'Flagship'], ['13,650 km', 'Max range'], ['419', 'Seats / 2 class'], ['0.84 Mach', 'Cruise speed']] },
-      b737: { img: 'assets/fleet-737.webp?v=7', name: 'Boeing 737-800', tag: 'The Workhorse',
+      b737: { img: 'assets/fleet-737.webp?v=8', name: 'Boeing 737-800', tag: 'The Workhorse',
         alt: 'Biman Bangladesh Airlines Boeing 737-800 cruising above the clouds',
         spec: [['Boeing 737-800', 'Workhorse'], ['5,765 km', 'Max range'], ['162', 'Seats / 2 class'], ['0.785 Mach', 'Cruise speed']] }
     };
